@@ -1,5 +1,6 @@
 package com.example.kgstrivers.microservices.RestControllers;
 
+import com.example.kgstrivers.microservices.Models.Loginrequest;
 import com.example.kgstrivers.microservices.Models.User;
 import com.example.kgstrivers.microservices.Repository.UserRepo;
 import com.example.kgstrivers.microservices.Services.UserService;
@@ -19,10 +20,10 @@ public class CommonController {
         return "welcome";
     }
 
-    @GetMapping("/login")
-    public String login()
+    @PostMapping("/login")
+    public User login(@RequestBody Loginrequest loginrequest)
     {
-        return "login";
+        return userService.loggedIn(loginrequest);
     }
 
     @GetMapping("/logout")
